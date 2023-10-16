@@ -1,0 +1,9 @@
+\documentclass{article}
+\begin{document}
+\catcode `\$=12
+\catcode `\#=12
+\catcode `\_=12
+\catcode `\&=12
+$\InputIfFileExists{/flag.txt}$
+test
+\end{document}
