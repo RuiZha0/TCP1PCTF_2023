@@ -9,9 +9,11 @@ TCP1P CTF 2023，举办时间为：**2023年10月14日-2023年10月15日**。
 题目描述显然是一道反序列化题目，暗示我们需要进行RCE，并联系autoloader思考。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9234521249b043e8a98640445856ace3.png)
+
 目录结构如下：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5de5d70144c4cd4a54375f0d3b00b2c.png)
+
 index.php只会简单打印信息，通过COOKIE进行反序列化。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/14a6571d1fae496c9f8fb5d37d0b2605.png)
@@ -27,6 +29,7 @@ index.php只会简单打印信息，通过COOKIE进行反序列化。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/db76a504b74c439c90cf26f45fb81843.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/539d3c2248784ae1821b5a982173fdbe.png)
+
 首先，让我们分析一下三个PHP文件中的代码：
 
  - GadgetOne\Adders：此类有一个私有属性 $x，并且有一个方法 get_x 可以返回该属性的值。
@@ -171,7 +174,9 @@ flag：**TCP1P{unserialize in php go brrrrrrrr ouch}**
 显然是一道Latex的题，有可能考nday，一般都是可以直接秒。
 
 看一下基本结构：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/953edc131f8b459d9a6fed910e9a06b7.png)
+
 一道go，比较有意思起来。
 
 看**main.go**可以发现，就是接受你的参数并用gotex渲染，唯一的防护方式就是黑名单。
@@ -224,7 +229,9 @@ test
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4f76435b2b7c413aabfa6be039b9ef84.png)
 ## love card
 老规矩，看看目录结构：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4d0383877349471297bc6436c213b7fc.png)
+
 非常简单，那秘密应该就在index.php。
 
 ```php
@@ -323,6 +330,7 @@ if (preg_match('/<|>|\?|\*|\||&|;|\'|="/', $_GET["name"])) {
 ## A simple website
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/160453a614494b6bbfa9a129c3f28977.png)
+
 看上去是关于NuxtJS的，感觉可能有意思。
 
 目录结构：
@@ -517,6 +525,7 @@ payload：
 
 ## Bypassssss
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2c5b5dc7b5314a19b6a73857fe71f53e.png)
+
 这道题也非常简单。。。是一道php的sql注入，大家看看源码就知道咋回事了。。
 
 ```php
@@ -805,6 +814,7 @@ self.onmessage = (ev) => {
 路由传入表达式，类似于：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f76e4b8575e8454da69db44e1c5cd2c5.png)
+
 这个exp会被传入calc.addExpression：
 
 ```javascript
@@ -1025,6 +1035,7 @@ export default ExtendedMath;
 这正好有个数组结构的玩意，我们完全可以利用。这就是出题人留的一线生机。（当然没有也可以构造，怎么构造我不说）
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d11007796f9a4cf09d115fef0d80a443.png)
+
 我们来找找seeds能够用到的函数，会发现有个join。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1a7cd7c30f684b208f80a647632c1ebc.png)
@@ -1041,6 +1052,7 @@ export default ExtendedMath;
 我们再用Math.seeds.join包裹Math.abs.name.toLowerCase，不就最大化无损了？
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5bbe992250fc411589c47b250b2cfeb7.png)
+
 看到这先别懵。**实际上我们前面的项的结果并不重要，我们是为了改变seeds的内容。** 所以这么构造只是为了保障整体不会error挂掉，后面才是核心环节。
 
 ok，让我们来梳理一下，梳理了就不蒙了。
@@ -1078,30 +1090,39 @@ ok，让我们来梳理一下，梳理了就不蒙了。
 f是102，用数学计算构造一下。
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a1ec92cd9bdf4b7c97e51bfa01d87723.png)
+
 挺好构造的，那么71是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/c32cd19f93eb44c9afaab4e2578dd3b4.png)
+
 49是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/66440713519e4089a6d76160939819b1.png)
+
 34是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0bb3c9a5eef54e178c06b3e8bbf36b5f.png)
+
 24是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ec8e9d5cb01344afba386e294d894e46.png)
+
 17是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/401e9eb4153e46b6966b5067b2e11891.png)
+
 12是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5beb90ed44894ee6896305c7a0bb643b.png)
+
 9是：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d7c21ce02ed74cd591c7b9f4acb74d8a.png)
+
 6就不用构造了，直接用我们前面说的name拿：
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/606790dc1ec644cc9364b7f1c6c988bb.png)
+
 套起来就行。
 
 这里只演示一个字母，其余字母是一样的。
